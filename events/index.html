@@ -18,7 +18,8 @@ layout: default
     </tr>
   </thead>
   <tbody>
-    {% for event_hash in site.data.events %}
+    {% assign by_location = site.data.events | location_sort %}
+    {% for event_hash in by_location %}
       {% assign event = event_hash[1] %}
       <tr>
         <td>{{ event.location.country }}</td>
