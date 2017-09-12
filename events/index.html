@@ -1,7 +1,11 @@
 ---
 layout: default
 ---
-<br/><br/>
+
+<div id="map" style="float: none; margin-right: auto;margin-left: auto;">
+  <div id="popup"></div>
+</div>
+
 <center>
   <h1>TOTAL OF {{ site.data.events | size }} Events!</h1>
 <table>
@@ -28,3 +32,13 @@ layout: default
   </tbody>
 </table>
 </center>
+
+<script>
+  $(function() {
+    $.get('/events/gdcr2017.json', function(eventsJson) {
+      var gdcr2017Events = mapEventsDataToMapFormat(eventsJson);
+      addEventsToMap(gdcr2017Events);
+    });
+  });
+</script>
+
